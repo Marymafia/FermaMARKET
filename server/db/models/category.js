@@ -1,7 +1,6 @@
 const {
   Model,
 } = require('sequelize');
-const user = require('./user');
 
 module.exports = (sequelize, DataTypes) => {
   class Category extends Model {
@@ -10,8 +9,8 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {
-      this.belongsToMany(user, { through: 'Products', foreignKey: 'category_id' });
+    static associate({ User }) {
+      this.belongsToMany(User, { through: 'Products', foreignKey: 'category_id' });
     }
   }
   Category.init({

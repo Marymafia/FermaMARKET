@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const bycrypt = require('bcrypt');
-const { User } = require('../db/models');
+const { User, Role } = require('../db/models');
 
 router.route('/')
   .get(async (req, res) => {
@@ -9,11 +9,18 @@ router.route('/')
 
 router.route('/signup')
   .post(async (req, res) => {
-    console.log(req.body);
-    const { name, email, password } = req.body;
-    if (name && email && password) {
+    console.log('>>>>>>>>>', req.body);
+    const {
+      name, email, password, address,
+      phone,
+    } = req.body;
+    if (name && email && password && address && phone) {
+      const role = await Role.findOne({ where: { id: 1 } });
       const pass = await bycrypt.hash(password, 10);
-      const newUser = await User.create({ name, email, password: pass });
+      const newUser = await User.create({
+        name, email, password: pass, role_id: role.id, address, phone,
+      });
+      console.log(newUser);
       req.session.user = { name: newUser.name, id: newUser.id };
       return res.json({ name: newUser.name, id: newUser.id });
     }
