@@ -21,8 +21,8 @@ module.exports = (sequelize, DataTypes) => {
           foreignKey: 'role_id',
         },
       );
-      this.belongsToMany(category, { through: 'Products', foreignKey: 'user_id' });
-      this.belongsToMany(product, { through: 'FvoriteProducts', foreignKey: 'user_id' });
+      this.belongsToMany(models.Category, { through: 'Products', foreignKey: 'user_id' });
+      this.belongsToMany(models.Product, { through: 'FavoriteProducts', foreignKey: 'user_id' });
       this.hasMany(models.FavoriteSeller, {
         foreignKey: 'user_id',
       });

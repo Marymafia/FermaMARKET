@@ -1,12 +1,29 @@
 import './App.css';
+
+import { Routes, Route } from 'react-router-dom';
 import Navbar01 from './components/Navbar01';
 import CategoriesPage from './page/CategoriesPage';
+
+import Navbar from './component/Navbar/Navbar';
+import SignIn from './component/SignIn/SignIn';
+import SignUp from './component/SignUp/SignUp';
+import Home from './component/Home/Home';
 
 function App() {
   return (
     <div className="app">
+
       <Navbar01 />
       <CategoriesPage />
+
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
+
+      </Routes>
+
     </div>
   );
 }
