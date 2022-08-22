@@ -1,23 +1,24 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { CardCategory } from '../components/CardCategory';
+import CardCategory from '../components/CardCategory/CardCategory';
+import { getCurrentCardsFunc } from '../redux/actions/CurrentCardsCategoryActions';
 
 export default function CategoriesAllCard() {
   const { id } = useParams();
-  // const dispatch = useDispatch();
-  // const allRooms = useSelector((state) => state.allRooms); 
+  const dispatch = useDispatch();
+  // const allRooms = useSelector((state) => state.allRooms);
   // const hallid = allRooms[0].id;
 
   useEffect(() => {
     console.log(id);
-    // dispatch(getDevisesRoomFunc(hallid));
+    dispatch(getCurrentCardsFunc(id));
   }, []);
 
-  const cardCategory = useSelector((state) => state.card);
+  const products = useSelector((state) => state.products);
   return (
     <div>
-      { cardCategory.map((el) => <CardCategory key={el.id} el={el} />)}
+      { products.map((el) => <CardCategory key={el.id} el={el} />)}
     </div>
   );
 }
