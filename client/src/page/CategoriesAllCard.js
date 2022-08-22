@@ -10,6 +10,7 @@ export default function CategoriesAllCard() {
   // const allRooms = useSelector((state) => state.allRooms);
   // const hallid = allRooms[0].id;
 
+  
   useEffect(() => {
     console.log(id);
     dispatch(getCurrentCardsFunc(id));

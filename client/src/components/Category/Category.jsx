@@ -9,6 +9,7 @@ export default function Category() {
   useEffect(() => {
     dispatch(getAllCategoryFunc());
   }, []);
+  
   return (
     <div className="container-fluid mx-2">
       {categories.map((el) => (
