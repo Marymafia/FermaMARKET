@@ -10,12 +10,17 @@ export default function SignUp() {
   const dispatch = useDispatch();
 
   const inputHandler = (e) => {
+    e.preventDefault();
     setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
-
+  // const radioHandler = (e, role) => {
+  //   e.preventDefault();
+  //   setInput((prev) => ({ ...prev, role }));
+  // };
+  console.log(input);
   const submitHandler = (e) => {
     e.preventDefault();
-    if (input.name && input.password && input.email && input.phone && input.address) {
+    if (input.name && input.password && input.email && input.phone && input.address && input.role) {
       dispatch(userSignUp(input));
       setInput({});
       navigate('/');
@@ -62,7 +67,7 @@ export default function SignUp() {
                 type="password"
                 name="password"
                 className="form-control flatinput"
-                id="body"
+                id="password"
                 placeholder="..."
               />
             </div>
@@ -75,7 +80,7 @@ export default function SignUp() {
                 type="text"
                 name="phone"
                 className="form-control flatinput"
-                id="name"
+                id="phone"
                 placeholder="..."
               />
             </div>
@@ -88,26 +93,43 @@ export default function SignUp() {
                 type="text"
                 name="address"
                 className="form-control flatinput"
-                id="name"
+                id="address"
                 placeholder="..."
               />
             </div>
-
-            <div className="d-grid gap-2 col-6 mx-auto">
-              <button type="submit" className="btn btn-outline-primary ">Register</button>
-            </div>
-
             <div className="form-check">
-              <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+              <input
+                className="form-check-input"
+                type="radio"
+                value="2"
+                onChange={inputHandler}
+                name="role"
+                id="flexRadioDefault1"
+                checked={input.role === '2'}
+                // checked
+              />
               <label className="form-check-label" htmlFor="flexRadioDefault1">
                 Я покупатель
               </label>
             </div>
             <div className="form-check">
-              <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked />
+              <input
+                className="form-check-input"
+                type="radio"
+                value="3"
+                onChange={inputHandler}
+                name="role"
+                id="flexRadioDefault2"
+                // checked
+                checked={input.role === '3'}
+              />
               <label className="form-check-label" htmlFor="flexRadioDefault2">
                 Я продавец
               </label>
+            </div>
+
+            <div className="d-grid gap-2 col-6 mx-auto">
+              <button type="submit" className="btn btn-outline-primary ">Register</button>
             </div>
 
           </form>
