@@ -20,6 +20,10 @@ function Navbar(props) {
 
         {user.name}
         <Link className="btn btn-light btn-lg" to="/">Home</Link>
+        <Link className="btn btn-light btn-lg" to="/contacts">Контакты</Link>
+        <Link className="btn btn-light btn-lg" to="/about">О комапнии</Link>
+        <Link className="btn btn-light btn-lg" to="/category">Категории</Link>
+
         {!user.id
           ? (
             <>
@@ -27,7 +31,15 @@ function Navbar(props) {
               <Link className="btn btn-light btn-lg" to="/signin">Вход</Link>
             </>
           )
-          : <button onClick={logOut} type="button" className="btn btn-light btn-lg">exit</button>}
+
+
+          : (
+            <>
+              <button onClick={logOut} type="button" className="btn btn-light btn-lg">Выход</button>
+              <Link className="btn btn-light btn-lg" to="/lk">Личный кабинет</Link>
+            </>
+          )}
+
       </div>
     </nav>
   );
