@@ -1,3 +1,13 @@
+
+import './Footer.css';
+
+function Footer() {
+  return (
+    <footer>
+      <div className="container">
+        All Rights Reserved &copy; 2022 &#8226;
+        <a href="https://github.com/Marymafia/FermaMARKET" target="_blank" rel="noreferrer">GitHub</a>
+
 import React from 'react';
 
 function Footer() {
@@ -78,6 +88,7 @@ function Footer() {
 
       <div className="text-center p-4" style={{ color: 'rgba0, 0, 0, 0.05' }}>
         © 2022 Ferma-MARKET
+
       </div>
     </footer>
   );

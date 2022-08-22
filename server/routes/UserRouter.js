@@ -15,7 +15,7 @@ router.route('/signup')
         phone, role,
       } = req.body;
       if (name && email && password && address && phone && role) {
-        const roles = await Role.findOne({ where: { id: +role } });// role_id form
+        const roles = await Role.findOne({ where: { id: +role } });
         const pass = await bycrypt.hash(password, 10);
         const newUser = await User.create({
           name, email, password: pass, role_id: roles.id, address, phone,

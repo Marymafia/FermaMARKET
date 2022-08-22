@@ -8,6 +8,8 @@ const CategoryRouter = require('./routes/CategoryRouter');
 // const axios = require('axios');
 
 const UserRouter = require('./routes/UserRouter');
+const Categoryes = require('./routes/CategoryesAllRouter');
+const CardCategorie = require('./routes/CardsCategoriesRouter');
 
 const PORT = process.env.PORT || 3002;
 
@@ -36,6 +38,9 @@ app.use(session({
 }));
 
 app.use('/api/user', UserRouter);
+
+app.use('/api', Categoryes);
+app.use('/api/products', CardCategorie);
 app.use('/api/category', CategoryRouter);
 
 app.listen(PORT, () => {

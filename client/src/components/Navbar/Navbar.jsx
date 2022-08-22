@@ -15,8 +15,9 @@ function Navbar(props) {
 
   return (
 
-    <nav className="navbar bg-success">
+    <nav className="navbar">
       <div className="container-fluid">
+
         {user.name}
         <Link className="btn btn-light btn-lg" to="/">Home</Link>
         <Link className="btn btn-light btn-lg" to="/contacts">Контакты</Link>
@@ -30,6 +31,8 @@ function Navbar(props) {
               <Link className="btn btn-light btn-lg" to="/signin">Вход</Link>
             </>
           )
+
+
           : (
             <>
               <button onClick={logOut} type="button" className="btn btn-light btn-lg">Выход</button>
