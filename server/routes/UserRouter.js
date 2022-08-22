@@ -9,7 +9,6 @@ router.route('/')
 
 router.route('/signup')
   .post(async (req, res) => {
-    console.log('>>>>>>>>>', req.body);
     try {
       const {
         name, email, password, address,
@@ -69,17 +68,16 @@ router.route('/signin')
 
 router.route('/check')
   .post((req, res) => {
-    console.log('--->', req.session.user);
     if (req.session.user) {
       return res.json(req.session.user);
     }
-    return res.sendStatus(401);
+    return res.json({ message: 'нет user' });
   });
 
 router.route('/logout')
   .get((req, res) => {
     req.session.destroy();
-    res.clearCookie('sid').sendStatus(200);
+    res.clearCookie('Ferma').sendStatus(200);
   });
 
 module.exports = router;

@@ -4,11 +4,12 @@ const morgan = require('morgan');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 const cors = require('cors');
+const CategoryRouter = require('./routes/CategoryRouter');
 // const axios = require('axios');
 
 const UserRouter = require('./routes/UserRouter');
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 
 const app = express();
 
@@ -35,6 +36,7 @@ app.use(session({
 }));
 
 app.use('/api/user', UserRouter);
+app.use('/api/category', CategoryRouter);
 
 app.listen(PORT, () => {
   console.log('server start on port ', PORT);
