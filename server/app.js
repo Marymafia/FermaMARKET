@@ -7,6 +7,8 @@ const cors = require('cors');
 // const axios = require('axios');
 
 const UserRouter = require('./routes/UserRouter');
+const Categoryes = require('./routes/CategoryesAll');
+const CardsCategories = require('./routes/CardsCategories')
 
 const PORT = process.env.PORT || 3001;
 
@@ -35,6 +37,8 @@ app.use(session({
 }));
 
 app.use('/api/user', UserRouter);
+app.use('/api', Categoryes);
+app.use('/api/:id' CardsCategories)
 
 app.listen(PORT, () => {
   console.log('server start on port ', PORT);

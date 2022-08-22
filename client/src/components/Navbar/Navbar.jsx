@@ -5,12 +5,11 @@ import './Navbar.css';
 function Navbar() {
   return (
 
-    <nav className="navbar bg-success">
+    <nav className="navbar">
       <div className="container-fluid">
-        <Link className="btn btn-light btn-lg" to="/">Home</Link>
-        <Link className="btn btn-light btn-lg" to="/signup">Регистрация</Link>
-        <Link className="btn btn-light btn-lg" to="/signin">Вход</Link>
-
+        <Link className="btn btn-light" to="/">Home</Link>
+        <Link className="btn btn-light" to="/signup">Регистрация</Link>
+        <Link className="btn btn-light" to="/signin">Вход</Link>
       </div>
     </nav>
   );
