@@ -9,22 +9,32 @@ router.route('/')
 
 router.route('/signup')
   .post(async (req, res) => {
-    console.log('>>>>>>>>>', req.body);
-    const {
-      name, email, password, address,
-      phone,
-    } = req.body;
-    if (name && email && password && address && phone) {
-      const role = await Role.findOne({ where: { id: 1 } });
-      const pass = await bycrypt.hash(password, 10);
-      const newUser = await User.create({
-        name, email, password: pass, role_id: role.id, address, phone,
-      });
-      console.log(newUser);
-      req.session.user = { name: newUser.name, id: newUser.id };
-      return res.json({ name: newUser.name, id: newUser.id });
+    try {
+      const {
+        name, email, password, address,
+        phone, role,
+      } = req.body;
+      if (name && email && password && address && phone && role) {
+        const roles = await Role.findOne({ where: { id: +role } });
+        const pass = await bycrypt.hash(password, 10);
+        const newUser = await User.create({
+          name, email, password: pass, role_id: roles.id, address, phone,
+        });
+        console.log(newUser);
+        req.session.user = { name: newUser.name, id: newUser.id };
+        return res.json({
+          id: newUser.id,
+          name: newUser.name,
+          email: newUser.email,
+          address: newUser.address,
+          phone: newUser.phone,
+        });
+      }
+      return res.sendStatus(401);
+    } catch (err) {
+      console.log(err);
+      return res.sendStatus(401);
     }
-    return res.sendStatus(401);
   });
 
 router.route('/signin')
@@ -41,7 +51,13 @@ router.route('/signin')
             name: newUser.name,
           };
         }
-        return res.json({ id: newUser.id, name: newUser.name });
+        return res.json({
+          id: newUser.id,
+          name: newUser.name,
+          email: newUser.email,
+          address: newUser.address,
+          phone: newUser.phone,
+        });
       } catch (err) {
         console.log(err);
         return res.sendStatus(500);
@@ -52,17 +68,16 @@ router.route('/signin')
 
 router.route('/check')
   .post((req, res) => {
-    console.log('--->', req.session.user);
     if (req.session.user) {
       return res.json(req.session.user);
     }
-    return res.sendStatus(401);
+    return res.json({ message: 'нет user' });
   });
 
 router.route('/logout')
   .get((req, res) => {
     req.session.destroy();
-    res.clearCookie('sid').sendStatus(200);
+    res.clearCookie('Ferma').sendStatus(200);
   });
 
 module.exports = router;
