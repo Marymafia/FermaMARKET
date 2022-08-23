@@ -22,7 +22,6 @@ function Navbar(props) {
         <Link className="btn btn-light btn-lg" to="/">Home</Link>
         <Link className="btn btn-light btn-lg" to="/contacts">Контакты</Link>
         <Link className="btn btn-light btn-lg" to="/about">О комапнии</Link>
-        <Link className="btn btn-light btn-lg" to="/category">Категории</Link>
 
         {!user.id
           ? (
@@ -31,7 +30,6 @@ function Navbar(props) {
               <Link className="btn btn-light btn-lg" to="/signin">Вход</Link>
             </>
           )
-
 
           : (
             <>

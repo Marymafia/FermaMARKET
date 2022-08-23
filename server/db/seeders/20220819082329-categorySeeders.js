@@ -11,35 +11,35 @@ module.exports = {
     */
     await queryInterface.bulkInsert('Categories', [{
       name: 'Овощи',
-      img: '/Vegetable.png',
+      img: 'vegetable3.png',
     },
     {
       name: 'Фрукты',
-      img: '/Apple.jpeg',
+      img: 'Apple.jpeg',
     },
     {
       name: 'Молочные изделия',
-      img: '/Milckproducts.jpeg',
+      img: 'Milckproducts.jpeg',
     },
     {
       name: 'Мясо и птица',
-      img: '/Meats.jpeg',
+      img: 'Meats.jpeg',
     },
     {
       name: 'Рыба',
-      img: '/fish2.jpeg',
+      img: 'fish2.jpeg',
     },
     {
       name: 'Мед',
-      img: '/Hony.png',
+      img: 'Hony.png',
     },
     {
       name: 'Выпечка',
-      img: '/bread2.jpeg',
+      img: 'bread2.jpeg',
     },
     {
       name: 'Другое',
-      img: '/Other.jpeg',
+      img: 'Other.jpeg',
     },
     ], {});
   },
