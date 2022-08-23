@@ -28,9 +28,8 @@ export default function SignIn() {
         <h2>Вход в учетную запись</h2>
       </div>
       <div className="row mt-5">
-
         <form onSubmit={submitHandler}>
-          <div className="mb-2 mt-3 myLabel">
+          <div className="mb-2 mt-3 myLabel container">
             <label htmlFor="email" className="form-label">Email</label>
             <input
               value={input.email || ''}
@@ -42,7 +41,7 @@ export default function SignIn() {
               placeholder="..."
             />
           </div>
-          <div className="mb-2 myLabel">
+          <div className="mb-2 myLabel container">
             <label htmlFor="password" className="form-label">Password</label>
             <input
               onChange={inputHandler}
